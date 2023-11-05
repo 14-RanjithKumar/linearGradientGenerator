@@ -1,0 +1,58 @@
+<!doctype html><html><head><style type="text/css">*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container button{
+  width: 120px;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 18px;
+  box-shadow: 0 0 4px black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.container .display{
+  margin-top: 10px;
+  font-weight: bold;
+}</style></head><body><div class="container">
+  <button type="button" id="btn">Generate</button> 
+  <div class="display">
+    <p>Color Code:<span class="colorcode"> color1 color2</span></p>
+  </div>
+</div><script type="text/javascript">let container = document.querySelector('.container');
+let btn = document.querySelector('#btn');
+let colorCode = document.querySelector('.colorcode');
+
+btn.addEventListener('click',generateLinearGradient);
+
+let colorValue = [1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+let bgcolorOne = '';
+let bgcolorTwo = '';
+
+function generateLinearGradient(){
+for(let i = 0; i<=5; i++){
+  bgcolorOne+= colorValue[Math.round(Math.random()*14)];
+  bgcolorTwo+= colorValue[Math.round(Math.random()*14)];
+}
+
+bgcolorOne = "#"+bgcolorOne;
+bgcolorTwo = "#"+bgcolorTwo;
+  container.style.background = "linear-gradient(120deg," + bgcolorOne + "," + bgcolorTwo + ")";
+
+colorCode.textContent = " "+bgcolorOne +" "+bgcolorTwo;
+bgcolorOne = '';
+bgcolorTwo = '';
+}</script></body><html>
